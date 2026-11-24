@@ -186,3 +186,30 @@ PHOTOS_WHITE = [
  ("thung-nhiet-lien-tuc-76", "Thùng 100 cuộn decal 76 liên tục"),
  ("thung-cuon-decal", "Cuộn decal bọc màng trong thùng"),
 ]
+
+# ---------- Mã decal Avery Dennison & UPM Raflatac có tại kho phôi xưởng (khổ cuộn lớn, mm) ----------
+# (hãng, mã, loại, khổ có sẵn, nhóm lọc, dùng cho)
+BRAND_STOCK = [
+ ("Avery Dennison", "NW0080", "Decal nhiệt (có khổ topcoat)", "82, 90, 135, 200, 217, 220, 235, 240, 245", "nhiet", "Tem cân, vận đơn, tem kho"),
+ ("Avery Dennison", "NW0083", "Decal nhiệt", "106, 108, 110, 145, 150, 158, 180, 210, 212, 220, 235, 245, 246, 257, 270, 297", "nhiet", "Vận đơn, tem giá, tem mã vạch"),
+ ("Avery Dennison", "NWS5137", "Decal nhiệt nền PP", "130, 150, 210, 220, 240", "nhiet", "Hàng lạnh, hàng gặp nước"),
+ ("Avery Dennison", "AW0331", "Decal giấy bóng", "170", "giay", "Tem sản phẩm, tem thùng"),
+ ("Avery Dennison", "AW0362", "Decal giấy keo remove (bóc sạch)", "119, 120, 144, 160, 185, 190, 218, 220, 232, 264, 272", "giay", "Tem dán tạm, hàng mới, kính"),
+ ("Avery Dennison", "AW0379", "Decal giấy", "265, 315", "giay", "Tem sản phẩm, in màu"),
+ ("Avery Dennison", "AW0420", "Decal giấy", "265, 315", "giay", "Tem sản phẩm, in màu"),
+ ("Avery Dennison", "AW0421", "Decal giấy", "100, 135, 195, 212, 220, 240, 248, 257, 284, 315", "giay", "Tem mã vạch in ruy băng, in màu"),
+ ("Avery Dennison", "AW0422", "Decal giấy", "220", "giay", "Tem sản phẩm"),
+ ("Avery Dennison", "AW0450", "Decal giấy", "135, 154, 175, 195, 212, 213, 220, 225, 265, 315", "giay", "Tem sản phẩm, tem thùng, in màu"),
+ ("Avery Dennison", "SW7325", "Decal giấy siêu keo", "95, 101, 110, 125, 190, 202, 212", "giay", "Bề mặt khó bám: thùng nhám, bao bì"),
+ ("Avery Dennison", "BW7005", "Decal nhựa PP", "90, 110, 120", "pp", "Chai lọ, mỹ phẩm"),
+ ("Avery Dennison", "BWS427", "Decal nhựa PP", "300", "pp", "Chai lọ, đồ uống"),
+ ("Avery Dennison", "SD8310", "Decal PP bóng siêu keo", "57, 230", "pp", "Bề mặt cong, khó bám"),
+ ("Avery Dennison", "SY7022", "Decal PP chịu lạnh", "160, 200, 215", "pp", "Thủy sản, thịt, hàng tủ đông"),
+ ("Avery Dennison", "SY7094", "Decal nhựa PP", "166", "pp", "Chai lọ, hàng gặp nước"),
+ ("Avery Dennison", "MZ0102", "Decal PP nữ trang", "76, 88, 110, 271", "pp", "Tem vàng, trang sức"),
+ ("Avery Dennison", "ADS1588", "Decal xi bạc", "200, 210, 220", "pp", "Tem thông số máy, tem cao cấp"),
+ ("UPM Raflatac", "HHF/RHC2", "Decal giấy (đế in logo UPM)", "165, 195, 212, 216, 220", "giay", "Tem sản phẩm, tem thùng"),
+ ("UPM Raflatac", "RH9S", "Decal PP chịu lạnh", "192, 225", "pp", "Hàng đông lạnh, thủy sản"),
+ ("UPM Raflatac", "RP37", "Decal PP chịu lạnh", "152", "pp", "Hàng đông lạnh"),
+]
+BRAND_FILTERS = [("nhiet", "Decal nhiệt"), ("giay", "Decal giấy"), ("pp", "Decal nhựa PP, xi bạc")]

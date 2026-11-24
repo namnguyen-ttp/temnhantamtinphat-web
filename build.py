@@ -9,7 +9,7 @@ from urllib.parse import quote
 from content import SITE, CATS, POSTS, FSC
 import re
 from godex_list import ITEMS as GITEMS, FILTERS as GFILTERS
-from catalog import GROUPS, WHITE, WHITE_FILTERS, BESPOKE, MATERIALS, COLOR_TYPES, COLOR_OPTIONS, GODEX, GODEX_FILTERS, SUPPLIES, PHOTOS_WHITE
+from catalog import GROUPS, WHITE, WHITE_FILTERS, BESPOKE, MATERIALS, COLOR_TYPES, COLOR_OPTIONS, GODEX, GODEX_FILTERS, SUPPLIES, PHOTOS_WHITE, BRAND_STOCK, BRAND_FILTERS
 if FSC["status"] == "pending":
     CATS = [c for c in CATS if not c.get("fsc")]
     POSTS = [p for p in POSTS if not p.get("fsc")]
@@ -548,6 +548,14 @@ def group_crumb(c):
     g = next((g for g in GROUPS if c["slug"] in g["cats"]), None)
     return f'<a href="{g["slug"]}.html">{e(g["name"])}</a><span>/</span>' if g else '<a href="index.html#danh-muc">Sản phẩm</a><span>/</span>'
 
+def brand_stock():
+    rows = "".join(f'<tr data-g="{g}"><td data-l="Hãng">{e(b)}</td><td data-l="Mã"><b>{e(m)}</b></td><td data-l="Loại">{e(t)}</td><td data-l="Khổ cuộn có sẵn (mm)">{e(k)}</td><td data-l="Dùng cho">{e(u)}</td></tr>' for b, m, t, k, g, u in BRAND_STOCK)
+    return f'''<div><h2 id="bang-ma">Bảng mã decal Avery &amp; UPM có tại kho</h2>
+<p class="muted">{len(BRAND_STOCK)} mã đang có tại kho phôi xưởng. Khổ bên dưới là khổ cuộn lớn, xưởng xả và bế theo khổ tem anh/chị cần. Gõ mã hoặc khổ để tìm nhanh, ví dụ "AW0450" hoặc "220".</p>
+{chips_filter(BRAND_FILTERS, "tblbrand")}
+<div class="scroll"><table class="cat-tbl stack" id="tblbrand"><thead><tr><th>Hãng</th><th>Mã</th><th>Loại</th><th>Khổ cuộn có sẵn (mm)</th><th>Dùng cho</th></tr></thead><tbody>{rows}</tbody></table></div>
+<p class="muted" style="font-size:14px;margin-top:10px">Tồn kho thay đổi hằng ngày. Gọi <a href="tel:{SITE["hotline_raw"]}"><b>{SITE["hotline"]}</b></a> hoặc nhắn Zalo <a href="{SITE["zalo"]}">{SITE["zalo_num"]}</a> để xác nhận mã và khổ trước khi đặt.</p></div>'''
+
 def cat_page(c):
     rel = [p for p in POSTS if p["cat"] == c["slug"]] or POSTS[:2]
     others = [x for x in CATS if x["slug"] != c["slug"]][:3]
@@ -564,6 +572,7 @@ def cat_page(c):
 <div><h2>Hay dùng cho</h2><ul class="chips">{"".join(f"<li>{e(u)}</li>" for u in c["uses"])}</ul>
 <div class="prose" style="margin-top:22px">{c["body"]}</div></div>
 </div></section>
+{('<section class="band" style="padding-top:0"><div class="wrap">' + brand_stock() + '</div></section>') if c["slug"] == "giay-decal-avery-upm" else ""}
 <section class="band dark"><div class="wrap vgrid">{video_block(c["video"], c["name"])}
 <div><h2>{e(c["video"]["h"])}</h2><p class="muted">{e(c["video"]["p"])}</p><a class="btn btn-gold" href="#bao-gia">Báo giá {e(c["name"].lower())}</a></div></div></section>
 <section class="band"><div class="wrap two">

@@ -388,7 +388,7 @@ def group_page(g):
             mdl = (re.split(r"(?i)godex", n)[-1].strip() or n)[:22]
             pic = f'<div class="pic">{printer_svg(grp, model=mdl)}' + (f'<img src="{e(("img/godex/" + im.rsplit("/", 1)[-1]) if LOCAL_GODEX else im)}" alt="{e(n)}" loading="lazy" decoding="async" width="600" height="600" onerror="this.remove()">' if im else "") + "</div>"
             more = f'<a class="btn btn-line sm" href="{gpage(url_)}">Thông số đầy đủ</a>' if url_ else ""
-            return f'<article class="dev" data-g="{grp}">{pic}<div class="txt"><h3>{e(n)}</h3><p class="price">{e(price)}</p>{rows}<div class="dev-acts">{more}<a class="btn btn-red sm" href="tel:{s["hotline_raw"]}">Hỏi giá</a></div></div></article>'
+            return f'<article class="dev" data-g="{grp}">{pic}<div class="txt"><h3>{e(n)}</h3><p class="price">{e(price)}{"<small class=vat> (đã gồm VAT)</small>" if re.search(r"[0-9]", price) else ""}</p>{rows}<div class="dev-acts">{more}<a class="btn btn-red sm" href="tel:{s["hotline_raw"]}">Hỏi giá</a></div></div></article>'
         cards = "".join(card(*it) for it in GITEMS) + "".join(card(*it) for it in extra)
         total = len(GITEMS) + len(extra)
         sup = "".join(f"<tr><td data-l='Vật tư'><b>{e(a)}</b></td><td data-l='Đặc điểm'>{e(b_)}</td><td data-l='Dùng cho'>{e(c)}</td></tr>" for a, b_, c in SUPPLIES)
@@ -398,7 +398,7 @@ def group_page(g):
 <div class="devs" id="devs">{cards}</div></div></section>
 <section class="band" style="padding-top:0"><div class="wrap two">
 <div><h2>Ruy băng mực, đầu in, linh kiện</h2><div class="scroll"><table class="spec stack"><thead><tr><th>Vật tư</th><th>Đặc điểm</th><th>Dùng cho</th></tr></thead><tbody>{sup}</tbody></table></div></div>
-<div><h2>Bảo hành và giao hàng</h2><ul class="ticks lt"><li>{IC["check"]}<span>Bảo hành máy 12 tháng; đầu in 6 tháng (không bảo hành đầu in trầy xước do in hoặc hư do cháy nổ).</span></li><li>{IC["check"]}<span>Adapter và linh phụ kiện bảo hành theo tiêu chuẩn của hãng.</span></li><li>{IC["check"]}<span>Miễn phí giao hàng trong bán kính 5 km hoặc hóa đơn trên 3.000.000đ.</span></li><li>{IC["check"]}<span>Hướng dẫn cài đặt, thiết kế tem bằng phần mềm GoLabel miễn phí.</span></li></ul>
+<div><h2>Bảo hành và giao hàng</h2><ul class="ticks lt"><li>{IC["check"]}<span>Bảo hành thân máy 24 tháng; đầu in 6 tháng (không bảo hành đầu in trầy xước do in hoặc hư do cháy nổ).</span></li><li>{IC["check"]}<span>Adapter và linh phụ kiện bảo hành theo tiêu chuẩn của hãng.</span></li><li>{IC["check"]}<span>Tất cả giá trên web đã bao gồm VAT.</span></li><li>{IC["check"]}<span>Miễn phí giao hàng toàn quốc cho đơn trên 3.000.000đ; miễn phí giao nội thành TP.HCM trong bán kính 5 km.</span></li><li>{IC["check"]}<span>Hướng dẫn cài đặt, thiết kế tem bằng phần mềm GoLabel miễn phí.</span></li></ul>
 <p class="muted">Thiết bị GoDEX do Công ty TNHH TMDV Nam Nguyễn phân phối. Xem thêm tại <a href="https://namnguyeninfotech.com" rel="noopener">namnguyeninfotech.com</a>.</p></div>
 </div></section>'''
     sub_cats = [c for c in CATS if c["slug"] in g["cats"]]
@@ -474,8 +474,8 @@ def godex_pages():
         pic = f'<img class="gpic" src="{e(gimg(im))}" alt="{e(n)}" width="600" height="600" decoding="async" onerror="this.remove()">' if im else printer_svg(grp)
         body = f'''<section class="phero"><div class="wrap pgrid"><div>
 <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Trang chủ</a><span>/</span><a href="thiet-bi-godex.html">Thiết bị GoDEX</a><span>/</span><span>{e(n)}</span></nav>
-<h1>{e(n)}</h1><p class="price big">{e(price)}</p>
-<p class="lead">Hàng chính hãng GoDEX, có sẵn tại TP.HCM. Bảo hành máy 12 tháng, đầu in 6 tháng. Hướng dẫn cài đặt và thiết kế tem bằng GoLabel miễn phí.</p>
+<h1>{e(n)}</h1><p class="price big">{e(price)}{"<small class=vat> đã gồm VAT</small>" if re.search(r"[0-9]", price) else ""}</p>
+<p class="lead">Hàng chính hãng GoDEX, có sẵn tại TP.HCM. Giá đã bao gồm VAT. Bảo hành thân máy 24 tháng, đầu in 6 tháng. Miễn phí giao hàng toàn quốc cho đơn trên 3.000.000đ, miễn phí giao nội thành TP.HCM trong bán kính 5 km.</p>
 <div class="hero-cta"><a class="btn btn-gold" href="tel:{s["hotline_raw"]}">{IC["phone"]} {s["hotline"]}</a><a class="btn btn-line" style="color:#fff" href="{s["zalo"]}">Zalo {s["zalo_num"]}</a></div></div>
 <div class="pic gpic-wrap">{pic}</div></div></section>
 <section class="band"><div class="wrap"><div class="head"><h2>Thông số kỹ thuật {e(re.sub(r"(?i)^(máy in (mã vạch|tem nhãn)( công nghiệp)?( cầm tay)?( bluetooth)?( cầm tay)?|máy in)\s*", "", n) or n)}</h2></div>{spec_html}</div></section>

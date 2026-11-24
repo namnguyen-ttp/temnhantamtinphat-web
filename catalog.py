@@ -17,7 +17,7 @@ GROUPS = [
   "cats": ["tem-nhan-mau", "decal-nhua-decal-trong", "decal-vo-tem-bao-hanh", "tem-nhan-theo-nganh", "tem-nhan-giay-fsc"]},
  {"slug": "thiet-bi-godex", "name": "Thiết bị GoDEX", "kind": "godex",
   "title": "Máy in mã vạch GoDEX: để bàn, công nghiệp, di động, ruy băng, đầu in | Tâm Tín Phát",
-  "desc": "Máy in mã vạch GoDEX chính hãng: RT700, RT730, HD830i+, DT41, EZ520+, ZX430i+, ZX1200Xi Pro, GX4600i Pro, EZ6250i, MX30i. Ruy băng mực, đầu in thay thế. Bảo hành 12 tháng.",
+  "desc": "Máy in mã vạch GoDEX chính hãng: RT700, RT730, HD830i+, DT41, EZ520+, ZX430i+, ZX1200Xi Pro, GX4600i Pro, EZ6250i, MX30i. Ruy băng mực, đầu in thay thế. Bảo hành thân máy 24 tháng, giá đã gồm VAT.",
   "h1": "Máy in mã vạch GoDEX chính hãng",
   "lead": "Một nơi mua cả máy in, tem và mực: máy GoDEX để bàn, công nghiệp, cầm tay, kèm decal đúng khổ và ruy băng phù hợp. Cài đặt, hướng dẫn in tem tận nơi.",
   "cats": []},

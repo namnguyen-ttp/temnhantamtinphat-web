@@ -343,3 +343,4 @@ footer{padding-bottom:120px}
 .pgrid .pic.gpic-wrap{border:none;aspect-ratio:1/1}
 .phero .price.big{color:var(--gold,#f5b301)}
 .gspec th,.gspec td{border-bottom:0}
+.price .vat{font-size:.6em;font-weight:600;opacity:.8}

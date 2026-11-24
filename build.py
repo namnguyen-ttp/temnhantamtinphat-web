@@ -302,7 +302,8 @@ def cat_card(c, big=False):
 <div class="txt"><h3>{e(c["name"])}</h3><p>{e(c["short"])}</p><span class="go">Xem chi tiết {IC["arrow"]}</span></div></a>'''
 
 def group_card(g):
-    pic = {"godex": printer_svg("ban", model="GoDEX"), "trang": img("a6-cuon-100x150x350", "Decal nhiệt 100x150 tại kho Tâm Tín Phát", 960, 1200, "cover"),
+    gban = os.path.exists(os.path.join(SRC, "img", "banner-godex.webp"))
+    pic = {"godex": img("banner-godex", "Máy in mã vạch để bàn GoDEX chính hãng: GM630 Pro, RT863i Pro, RT730i Pro, RT700i Pro, EZ530+, DT4L, G500, GE300", 1600, 1100, "cover", True) if gban else printer_svg("ban", model="GoDEX"), "trang": img("a6-cuon-100x150x350", "Decal nhiệt 100x150 tại kho Tâm Tín Phát", 960, 1200, "cover"),
            "mau": img("banner-tem-nhan", "Các loại tem nhãn in màu Tâm Tín Phát", 1376, 768, "cover")}[g["kind"]]
     return f'''<a class="cat grp" href="{g["slug"]}.html"><div class="pic">{pic}</div>
 <div class="txt"><h3>{e(g["name"])}</h3><p>{e(GROUP_HINT[g["slug"]])}</p><span class="go">Xem bảng mã {IC["arrow"]}</span></div></a>'''
@@ -403,7 +404,8 @@ def group_page(g):
 </div></section>'''
     sub_cats = [c for c in CATS if c["slug"] in g["cats"]]
     more = f'<section class="band" style="padding-top:0"><div class="wrap"><div class="head"><h2>Xem chi tiết từng dòng</h2></div><div class="cats">{"".join(cat_card(c) for c in sub_cats)}</div></div></section>' if sub_cats else ""
-    pic = {"godex": printer_svg("ban", model="GoDEX"), "trang": img("thung-cuon-decal", "Decal nhiệt cuộn tại kho Tâm Tín Phát", 960, 1200, "cover", True),
+    gban = os.path.exists(os.path.join(SRC, "img", "banner-godex.webp"))
+    pic = {"godex": img("banner-godex", "Máy in mã vạch để bàn GoDEX chính hãng: GM630 Pro, RT863i Pro, RT730i Pro, RT700i Pro, EZ530+, DT4L, G500, GE300", 1600, 1100, "cover", True) if gban else printer_svg("ban", model="GoDEX"), "trang": img("thung-cuon-decal", "Decal nhiệt cuộn tại kho Tâm Tín Phát", 960, 1200, "cover", True),
            "mau": img("banner-tem-nhan", "Các loại tem nhãn in màu Tâm Tín Phát", 1376, 768, "cover", True)}[g["kind"]]
     body = f'''<section class="phero"><div class="wrap pgrid"><div>
 <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Trang chủ</a><span>/</span><a href="index.html#danh-muc">Sản phẩm</a><span>/</span><span>{e(g["name"])}</span></nav>

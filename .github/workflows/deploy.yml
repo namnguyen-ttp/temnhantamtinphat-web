@@ -20,6 +20,8 @@ jobs:
           python-version: "3.12"
       - name: Tai anh GoDEX ve may chu
         run: python fetch_godex_images.py
+      - name: Lay thong so GoDEX tu namnguyeninfotech.com
+        run: pip install beautifulsoup4 && python fetch_godex_specs.py
       - name: Sinh website
         run: LOCAL_GODEX=1 python build.py && echo "temnhantamtinphat.com" > dist/CNAME && touch dist/.nojekyll
       - uses: actions/upload-pages-artifact@v3

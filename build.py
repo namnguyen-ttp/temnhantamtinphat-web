@@ -387,7 +387,7 @@ def group_page(g):
             rows = f'<ul class="kv"><li><span>Độ phân giải</span><b>{e(sp_[0])}</b></li><li><span>Kiểu in</span><b>{e(sp_[1])}</b></li><li><span>Tốc độ in</span><b>{e(sp_[2])}</b></li><li><span>Khổ in tối đa</span><b>{e(sp_[3])}</b></li></ul>' if sp_ else ""
             mdl = (re.split(r"(?i)godex", n)[-1].strip() or n)[:22]
             pic = f'<div class="pic">{printer_svg(grp, model=mdl)}' + (f'<img src="{e(("img/godex/" + im.rsplit("/", 1)[-1]) if LOCAL_GODEX else im)}" alt="{e(n)}" loading="lazy" decoding="async" width="600" height="600" onerror="this.remove()">' if im else "") + "</div>"
-            more = f'<a class="btn btn-line sm" href="{e(url_)}" rel="noopener">Thông số đầy đủ</a>' if url_ else ""
+            more = f'<a class="btn btn-line sm" href="{gpage(url_)}">Thông số đầy đủ</a>' if url_ else ""
             return f'<article class="dev" data-g="{grp}">{pic}<div class="txt"><h3>{e(n)}</h3><p class="price">{e(price)}</p>{rows}<div class="dev-acts">{more}<a class="btn btn-red sm" href="tel:{s["hotline_raw"]}">Hỏi giá</a></div></div></article>'
         cards = "".join(card(*it) for it in GITEMS) + "".join(card(*it) for it in extra)
         total = len(GITEMS) + len(extra)
@@ -420,6 +420,76 @@ def group_page(g):
         sch.append({"@context": "https://schema.org", "@type": "ItemList", "name": "Sản phẩm GoDEX",
                     "itemListElement": [{"@type": "ListItem", "position": i+1, "item": dict({"@type": "Product", "name": n, "brand": {"@type": "Brand", "name": "GoDEX"}, "image": im, "url": u_}, **offer(p))} for i, (n, u_, p, im, g) in enumerate(GITEMS)]})
     write(g["slug"] + ".html", head(g["title"], g["desc"], g["slug"] + ".html", sch) + body + foot())
+
+# ---------- GoDEX chi tiết ----------
+GSPECS = {}
+_sp = os.path.join(os.path.dirname(os.path.abspath(__file__)), "godex_specs.json")
+if os.path.exists(_sp):
+    GSPECS = json.load(open(_sp, encoding="utf-8"))
+SKIP_RE = re.compile(r"(?i)(bảo hành|đọc thêm|hotline|zalo|liên hệ|namnguyen|nam nguyễn|\b0\d{9}\b|giá bán|khuyến mãi|\bKM\b)")
+
+def gpage(u):
+    return "godex-" + u.rstrip("/").rsplit("/", 1)[-1].lower() + ".html"
+
+def gimg(im):
+    return ("img/godex/" + im.rsplit("/", 1)[-1]) if LOCAL_GODEX else im
+
+def spec_rows(txt):
+    rows, intro = [], []
+    for ln in (txt or "").split("\n"):
+        ln = ln.strip()
+        if not ln or SKIP_RE.search(ln) or re.match(r"(?i)^thông số kỹ thuật:?$", ln):
+            continue
+        bullet = bool(re.match(r"^[•\-–*·]\s*", ln))
+        ln = re.sub(r"^[•\-–*·]\s*", "", ln)
+        m = None if bullet else re.match(r"^([^:]{2,45}):\s*(.*)$", ln)
+        if m:
+            k, v = m.group(1).strip(), m.group(2).strip()
+            parts = [x.strip() for x in re.split(r"\s*•\s*", v) if x.strip()]
+            rows.append([k, parts])
+        elif rows:
+            rows[-1][1].append(ln)
+        else:
+            intro.append(ln)
+    return intro, rows
+
+def godex_pages():
+    s = SITE
+    out = []
+    for n, u_, price, im, grp in GITEMS:
+        slug = gpage(u_)
+        intro, rows = spec_rows(GSPECS.get(u_.rstrip("/").rsplit("/", 1)[-1], ""))
+        def cell(vals):
+            if len(vals) <= 1:
+                return e(vals[0]) if vals else ""
+            return "<ul class='cell-list'>" + "".join(f"<li>{e(v)}</li>" for v in vals) + "</ul>"
+        table = "".join(f"<tr><th scope='row'>{e(k)}</th><td>{cell(v)}</td></tr>" for k, v in rows)
+        spec_html = (f'<p class="muted">{" ".join(e(x) for x in intro)}</p>' if intro else "") + (
+            f'<div class="scroll"><table class="spec gspec"><tbody>{table}</tbody></table></div>' if table else
+            f'<p>Thông số chi tiết đang được cập nhật. Gọi <a href="tel:{s["hotline_raw"]}"><b>{s["hotline"]}</b></a> để nhận datasheet.</p>')
+        quick = ", ".join(f"{k} {v[0]}" for k, v in rows if v and re.search(r"(?i)phân giải|tốc độ|độ rộng|chiều rộng", k))[:110]
+        desc = f"{n} chính hãng GoDEX. {quick}. Tư vấn, giao hàng tại TP.HCM, gọi {s['hotline']}."[:158]
+        rel = [it for it in GITEMS if it[4] == grp and it[1] != u_][:6]
+        rel_html = "".join(f'<a class="rel" href="{gpage(r[1])}"><span class="rp">{"<img src=" + chr(34) + e(gimg(r[3])) + chr(34) + " alt=" + chr(34) + e(r[0]) + chr(34) + " loading=lazy decoding=async width=300 height=300 onerror=this.remove()>" if r[3] else ""}</span><b>{e(r[0])}</b><span class="price">{e(r[2])}</span></a>' for r in rel)
+        pic = f'<img class="gpic" src="{e(gimg(im))}" alt="{e(n)}" width="600" height="600" decoding="async" onerror="this.remove()">' if im else printer_svg(grp)
+        body = f'''<section class="phero"><div class="wrap pgrid"><div>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Trang chủ</a><span>/</span><a href="thiet-bi-godex.html">Thiết bị GoDEX</a><span>/</span><span>{e(n)}</span></nav>
+<h1>{e(n)}</h1><p class="price big">{e(price)}</p>
+<p class="lead">Hàng chính hãng GoDEX, có sẵn tại TP.HCM. Bảo hành máy 12 tháng, đầu in 6 tháng. Hướng dẫn cài đặt và thiết kế tem bằng GoLabel miễn phí.</p>
+<div class="hero-cta"><a class="btn btn-gold" href="tel:{s["hotline_raw"]}">{IC["phone"]} {s["hotline"]}</a><a class="btn btn-line" style="color:#fff" href="{s["zalo"]}">Zalo {s["zalo_num"]}</a></div></div>
+<div class="pic gpic-wrap">{pic}</div></div></section>
+<section class="band"><div class="wrap"><div class="head"><h2>Thông số kỹ thuật {e(n.replace("Máy in mã vạch ", "").replace("Máy in tem nhãn ", ""))}</h2></div>{spec_html}</div></section>
+{f'<section class="band" style="padding-top:0"><div class="wrap"><div class="head"><h2>Sản phẩm cùng nhóm</h2></div><div class="rels">{rel_html}</div></div></section>' if rel_html else ""}
+{contact_band()}'''
+        d = re.sub(r"[^0-9]", "", price)
+        prod = {"@context": "https://schema.org", "@type": "Product", "name": n, "brand": {"@type": "Brand", "name": "GoDEX"},
+                "image": (BASE + "/" + gimg(im)) if (im and LOCAL_GODEX) else im, "url": url(slug), "description": desc}
+        if d:
+            prod["offers"] = {"@type": "Offer", "price": d, "priceCurrency": "VND", "availability": "https://schema.org/InStock", "url": url(slug)}
+        sch = [org_schema(), crumbs_schema([("Trang chủ", "index.html"), ("Thiết bị GoDEX", "thiet-bi-godex.html"), (n, slug)]), prod]
+        write(slug, head(f"{n} – thông số, giá | Tâm Tín Phát"[:70], desc, slug, sch) + body + foot())
+        out.append((slug, n))
+    return out
 
 # ---------- pages ----------
 def home():
@@ -583,6 +653,6 @@ if __name__ == "__main__":
     for c in CATS: cat_page(c)
     for g in GROUPS: group_page(g)
     for p in POSTS: post_page(p)
-    pages = misc()
+    pages = misc() + godex_pages()
     seo_files(pages)
     print("OK", len(os.listdir(OUT)), "files")

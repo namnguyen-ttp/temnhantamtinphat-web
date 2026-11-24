@@ -42,6 +42,39 @@ CATS = [
   "faq": [("Tem trắng dùng được cho máy in mã vạch nào?", "Dùng được cho hầu hết máy in tem phổ biến như GoDEX, Zebra, Xprinter. Anh/chị báo khổ tem, số tem mỗi hàng và loại máy, xưởng cuốn lõi và chiều tem cho phù hợp."),
           ("Đặt số lượng ít có làm không?", "Có. Xưởng nhận từ 5–10 cuộn tùy quy cách, phù hợp shop mới và đơn thử."),
           ("Decal giấy và decal nhiệt khác nhau thế nào?", "Decal nhiệt in trực tiếp, không cần ruy băng mực, hợp tem vận đơn dùng ngắn ngày. Decal giấy in bằng ruy băng, chữ bền hơn, hợp tem sản phẩm lưu kho lâu.")]},
+ {"slug": "giay-decal-avery-upm", "kind": "trang", "name": "Giấy decal Avery & UPM",
+  "short": "Decal Avery Dennison (Fasson) và UPM Raflatac: giấy, nhiệt, nhựa PP. Bế tem hoặc in màu theo yêu cầu.",
+  "title": "Giấy decal Avery Dennison (Fasson) & UPM Raflatac – in, bế tem theo yêu cầu | Tâm Tín Phát",
+  "desc": "In và bế tem trên giấy decal Avery Dennison (Fasson) và UPM Raflatac: decal giấy bóng, giấy mờ, decal nhiệt Thermal Eco, Thermal Top, decal nhựa PP trắng, trong. Báo giá theo khổ, gọi 0989 139 333.",
+  "h1": "Giấy decal Avery Dennison & UPM Raflatac",
+  "lead": "Hai hãng vật liệu tem nhãn lớn nhất thế giới. Xưởng nhận in, bế tem và xả cuộn đúng khổ trên decal Avery (Fasson) và UPM Raflatac cho khách cần tem bám chắc, in nét, chạy máy dán tự động ổn định.",
+  "spec": [("Hãng", "Avery Dennison (thương hiệu Fasson), UPM Raflatac"), ("Dòng giấy", "Decal giấy bóng (couché), giấy mờ (vellum), decal nhiệt"),
+           ("Dòng nhựa", "PP trắng, PP trong, PE, decal chịu lạnh"), ("Cách in", "In nhiệt trực tiếp, in ruy băng, in màu 5–6 màu"),
+           ("Gia công", "Bế theo kích thước, xả cuộn, cán màng, in logo"), ("Số lượng", "Từ 5–10 cuộn tùy quy cách")],
+  "uses": ["Kho vận, vận đơn", "Siêu thị, tem cân", "Thực phẩm, đông lạnh", "Mỹ phẩm, chai lọ", "Dược phẩm", "Hàng xuất khẩu"],
+  "body": """<p>Nhiều nhà máy, chuỗi bán lẻ và hàng xuất khẩu yêu cầu tem in trên <b>decal chính hãng Avery Dennison hoặc UPM Raflatac</b> để chắc độ bám keo, độ trắng và khả năng quét mã vạch. Tâm Tín Phát nhận in và bế tem trên cả hai dòng vật liệu này, đúng kích thước và chiều cuộn cho máy in của anh/chị.</p>
+<h3>Avery Dennison (Fasson)</h3>
+<div class="scroll"><table class="spec stack"><thead><tr><th>Dòng vật liệu</th><th>Đặc điểm</th><th>Hợp với</th></tr></thead><tbody>
+<tr><td data-l="Dòng"><b>Decal giấy bóng Fasson</b></td><td data-l="Đặc điểm">Mặt trắng bóng, in màu đẹp, in ruy băng nét; keo acrylic bám chắc</td><td data-l="Hợp với">Tem sản phẩm, tem thùng, hàng tiêu dùng</td></tr>
+<tr><td data-l="Dòng"><b>Decal giấy mờ (vellum)</b></td><td data-l="Đặc điểm">Mặt giấy không phủ bóng, in truyền nhiệt và ghi tay tốt</td><td data-l="Hợp với">Tem kho, tem thông tin, nhãn ghi chú</td></tr>
+<tr><td data-l="Dòng"><b>Thermal Eco (không BPA)</b></td><td data-l="Đặc điểm">Decal nhiệt in trực tiếp, không cần ruy băng</td><td data-l="Hợp với">Tem cân siêu thị, vận đơn dùng ngắn ngày</td></tr>
+<tr><td data-l="Dòng"><b>Decal nhiệt có lớp phủ (Thermal Top)</b></td><td data-l="Đặc điểm">Lớp phủ bảo vệ chống trầy, chống ẩm nhẹ, mã vạch giữ lâu hơn</td><td data-l="Hợp với">Logistics, kho lạnh, tem cần lưu lâu</td></tr>
+<tr><td data-l="Dòng"><b>Decal nhựa PP / PE</b></td><td data-l="Đặc điểm">Trắng hoặc trong, chống nước, dẻo, bám bề mặt cong</td><td data-l="Hợp với">Chai lọ, mỹ phẩm, đồ uống, hàng đông lạnh</td></tr>
+</tbody></table></div>
+<h3>UPM Raflatac</h3>
+<div class="scroll"><table class="spec stack"><thead><tr><th>Dòng vật liệu</th><th>Đặc điểm</th><th>Hợp với</th></tr></thead><tbody>
+<tr><td data-l="Dòng"><b>Raflacoat (giấy bóng)</b></td><td data-l="Đặc điểm">Giấy couché trắng, in màu và in ruy băng sắc nét</td><td data-l="Hợp với">Tem thực phẩm, bán lẻ, tem thùng</td></tr>
+<tr><td data-l="Dòng"><b>Vellum (giấy mờ)</b></td><td data-l="Đặc điểm">Giấy không phủ, in truyền nhiệt ổn định, giá hợp lý</td><td data-l="Hợp với">Tem kho, tem mã vạch thông dụng</td></tr>
+<tr><td data-l="Dòng"><b>Thermal Eco</b></td><td data-l="Đặc điểm">Decal nhiệt thông dụng, có dòng không BPA</td><td data-l="Hợp với">Tem cân, tem giá, vận đơn</td></tr>
+<tr><td data-l="Dòng"><b>Thermal Top</b></td><td data-l="Đặc điểm">Decal nhiệt có lớp phủ, chống trầy xước, quét mã tốt</td><td data-l="Hợp với">Vận chuyển, logistics, bán lẻ</td></tr>
+<tr><td data-l="Dòng"><b>PP White / PP Clear</b></td><td data-l="Đặc điểm">Nhựa PP trắng hoặc trong, chống nước, bền màu</td><td data-l="Hợp với">Mỹ phẩm, chăm sóc cá nhân, đồ uống</td></tr>
+</tbody></table></div>
+<p>Chưa biết chọn dòng nào? Anh/chị cho xưởng biết <b>dán lên bề mặt gì, môi trường bảo quản (khô, lạnh, ẩm), in bằng máy gì và dùng bao lâu</b>, nhân viên sẽ tư vấn đúng vật liệu và báo giá theo khổ.</p>""",
+  "video": {"cap": "Xả cuộn decal Avery, UPM tại xưởng", "yt": "", "h": "Từ cuộn lớn tới cuộn tem đúng khổ", "p": "Clip xả cuộn decal chính hãng, bế tem và kiểm cuộn trước khi đóng thùng."},
+  "faq": [("Avery và UPM khác decal thường thế nào?", "Decal chính hãng có độ trắng, lớp keo và lớp đế đồng đều hơn nên tem bám chắc, in nét và chạy máy dán tự động ít lỗi. Nhiều nhà máy và hàng xuất khẩu bắt buộc dùng hai dòng này."),
+          ("Có nhận in màu trên decal Avery, UPM không?", "Có. Xưởng in 5–6 màu, cán màng và bế hình trên cả decal giấy và decal nhựa của hai hãng."),
+          ("Mua decal Avery, UPM số lượng ít được không?", "Được. Xưởng xả cuộn và bế theo khổ anh/chị cần, nhận đơn từ 5–10 cuộn tùy quy cách."),
+          ("Nên chọn decal nhiệt thường hay loại có lớp phủ?", "Tem dùng ngắn ngày, để nơi khô thì decal nhiệt thường là đủ. Tem phải qua vận chuyển, kho lạnh, dễ cọ xát thì nên chọn loại có lớp phủ (Thermal Top) để mã vạch không bị mờ.")]},
  {"slug": "tem-nhan-mau", "kind": "mau", "name": "Tem nhãn in màu",
   "short": "In 5–6 màu, cán màng bóng hoặc mờ, bế theo hình logo. Nổi bật trên kệ.",
   "title": "In tem nhãn màu, decal in màu theo yêu cầu, cán màng, bế hình | Tâm Tín Phát",

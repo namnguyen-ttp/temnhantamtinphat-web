@@ -356,3 +356,7 @@ footer{padding-bottom:120px}
 @media(max-width:600px){.crumbs{font-size:13px;gap:6px}.crumbs a,.crumbs>span:last-child{min-height:34px;padding:5px 12px}.crumbs>span:last-child{max-width:62vw}}
 .pgrid .pic:has(img){border:none}
 .pgrid .pic img.cover{width:100%;height:100%;object-fit:cover;display:block}
+.two>*{min-width:0}
+.scroll{overflow-x:auto;max-width:100%}
+.prose .spec th,.prose .spec td{white-space:normal}
+@media(max-width:600px){.prose .spec.stack td{border:0}}

@@ -8,7 +8,7 @@ GROUPS = [
   "desc": "Bảng mã tem bế trắng có sẵn tại xưởng: decal nhiệt 35x22, 40x30, 50x30, 58x40 lõi cân, 75x100, 100x150; decal giấy in ruy băng; giấy in bill K57, K80, K110. Nhận bế mọi kích thước.",
   "h1": "Tem bế trắng: đủ mã, có sẵn, nhận bế mọi khổ",
   "lead": "Decal nhiệt, decal giấy in ruy băng, tem vận đơn, tem cân và giấy in bill. Hàng có sẵn giao ngay, kích thước lạ xưởng bế riêng.",
-  "cats": ["tem-nhan-trang", "giay-in-nhiet-giay-in-bill"]},
+  "cats": ["tem-nhan-trang", "giay-decal-avery-upm", "giay-in-nhiet-giay-in-bill"]},
  {"slug": "san-pham-tem-mau", "name": "Tem nhãn màu", "kind": "mau",
   "title": "Các loại tem nhãn in màu: mỹ phẩm, thực phẩm, trà sữa, trang sức, xi bạc | Tâm Tín Phát",
   "desc": "Tổng hợp các loại tem nhãn in màu đang dùng trên thị trường: tem logo, mỹ phẩm, thực phẩm, chai nước, ly trà sữa, đông lạnh, trang sức, tem cân in sẵn logo, decal vỡ, xi bạc. In 1–6 màu, cán màng, bế hình.",
@@ -77,6 +77,8 @@ MATERIALS = [
  ("Decal PP remove", "Nhựa, bóc sạch không để keo", "Thiết bị điện tử, kính, đồ gia dụng"),
  ("Decal xi bạc", "Ánh kim loại, bền nhiệt", "Tem thông số máy, tem cao cấp"),
  ("Decal vỡ", "Bóc là vỡ vụn", "Tem bảo hành, niêm phong"),
+ ("Decal Avery Dennison (Fasson)", "Decal chính hãng: giấy bóng, giấy mờ, nhiệt, PP", "Nhà máy, chuỗi bán lẻ, hàng xuất khẩu"),
+ ("Decal UPM Raflatac", "Decal chính hãng: Raflacoat, Vellum, Thermal Eco, Thermal Top, PP", "Thực phẩm, logistics, mỹ phẩm"),
 ]
 
 # ---------- Tem nhãn màu: các loại trên thị trường ----------

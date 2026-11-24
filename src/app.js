@@ -1,6 +1,6 @@
 {
   /* Cấu hình: dán URL Google Apps Script vào đây để form báo giá đổ về Google Sheet */
-  const FORM_ENDPOINT = "";
+  const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbzQh76V0ZESwNIC7HMKcWv_EoTrHwvi4ZS5hQ5datsNE20HnH-XMvW7IaDWX4tr1A2uNg/exec";
 
   const burger = document.querySelector(".burger");
   const menu = document.querySelector(".menu");
@@ -54,11 +54,20 @@
       e.preventDefault();
       const ok = form.querySelector(".ok");
       const data = Object.fromEntries(new FormData(form).entries());
+      if (!String(data.ho_ten || "").trim() || String(data.sdt || "").replace(/\D/g, "").length < 9) {
+        ok.textContent = "Anh/chị vui lòng nhập họ tên và số điện thoại (ít nhất 9 số).";
+        ok.classList.add("show");
+        return;
+      }
+      const btn = form.querySelector("button[type=submit]");
+      if (btn) btn.disabled = true;
       data.trang = location.pathname;
       data.thoi_gian = new Date().toISOString();
       try {
         const p = new URLSearchParams(location.search);
         ["utm_source", "utm_medium", "utm_campaign", "gclid", "fbclid"].forEach((k) => { if (p.get(k)) data[k] = p.get(k); });
+        const src = ["utm_source", "utm_campaign"].map((k) => data[k]).filter(Boolean).join("/") || (data.gclid ? "google-ads" : data.fbclid ? "facebook" : "");
+        if (src) data.trang += " | " + src;
       } catch (err) {}
       let sent = false;
       if (FORM_ENDPOINT) {
@@ -73,6 +82,7 @@
         : "Bản thử: yêu cầu chưa được gửi đi. Anh/chị vui lòng gọi 0989 139 333 hoặc nhắn Zalo 0961 232 277.";
       ok.classList.add("show");
       if (sent) form.reset();
+      if (btn) btn.disabled = false;
     });
   });
 

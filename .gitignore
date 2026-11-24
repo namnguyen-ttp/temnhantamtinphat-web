@@ -3,3 +3,4 @@ __pycache__/
 *.bak*.py
 content.bak.py
 build.bak.py
+apps-script/

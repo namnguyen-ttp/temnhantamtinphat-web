@@ -277,6 +277,7 @@ def quote_form(pre=""):
 <div class="row2"><label for="f-kt">Kích thước (mm)<input id="f-kt" name="kich_thuoc" placeholder="VD: 50 × 30"></label>
 <label for="f-sl">Số lượng<input id="f-sl" name="so_luong" placeholder="VD: 10 cuộn / 5.000 tem"></label></div>
 <label for="f-gc">Ghi chú<textarea id="f-gc" name="ghi_chu" placeholder="Chất liệu, số màu, cán màng, máy in đang dùng…"></textarea></label>
+<input type="text" name="web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 <button class="btn btn-red" type="submit">Gửi yêu cầu báo giá {IC["arrow"]}</button>
 <p class="ok" role="status"></p>
 <p class="muted" style="font-size:14px;margin:0">Có sẵn file thiết kế? Gửi thẳng qua Zalo <a href="{SITE["zalo"]}">{SITE["zalo_num"]}</a> cho nhanh.</p>

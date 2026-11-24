@@ -470,7 +470,7 @@ def godex_pages():
         quick = ", ".join(f"{k} {v[0]}" for k, v in rows if v and re.search(r"(?i)phân giải|tốc độ|độ rộng|chiều rộng", k))[:110]
         desc = f"{n} chính hãng GoDEX. {quick}. Tư vấn, giao hàng tại TP.HCM, gọi {s['hotline']}."[:158]
         rel = [it for it in GITEMS if it[4] == grp and it[1] != u_][:6]
-        rel_html = "".join(f'<a class="rel" href="{gpage(r[1])}"><span class="rp">{"<img src=" + chr(34) + e(gimg(r[3])) + chr(34) + " alt=" + chr(34) + e(r[0]) + chr(34) + " loading=lazy decoding=async width=300 height=300 onerror=this.remove()>" if r[3] else ""}</span><b>{e(r[0])}</b><span class="price">{e(r[2])}</span></a>' for r in rel)
+        rel_html = "".join(f'<a class="rel" href="{gpage(r[1])}"><span class="rp">{"<img src=" + chr(34) + e(gimg(r[3])) + chr(34) + " alt=" + chr(34) + e(r[0]) + chr(34) + " loading=lazy decoding=async width=300 height=300 onerror=this.remove()>" if r[3] else ""}</span><b>{e(r[0])}</b><span class="price">{e(r[2])}{"<small class=vat> (đã gồm VAT)</small>" if re.search(r"[0-9]", r[2]) else ""}</span></a>' for r in rel)
         pic = f'<img class="gpic" src="{e(gimg(im))}" alt="{e(n)}" width="600" height="600" decoding="async" onerror="this.remove()">' if im else printer_svg(grp)
         body = f'''<section class="phero"><div class="wrap pgrid"><div>
 <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Trang chủ</a><span>/</span><a href="thiet-bi-godex.html">Thiết bị GoDEX</a><span>/</span><span>{e(n)}</span></nav>

@@ -27,7 +27,7 @@ GROUPS = [
 # (mã, nhóm, tên, kích thước mm, cuộn, tem/hàng, đóng gói, tình trạng, dùng cho)
 WHITE = [
  ("DN-3522-25-2", "nhiet", "Decal nhiệt 35×22", "35 × 22", "25 m", "2", "Thùng 100 cuộn", "sẵn", "Tem giá, phụ kiện nhỏ"),
- ("DN-3522-30-2", "nhiet", "Decal nhiệt 35×22", "35 × 22", "30 m", "2", "Thùng 100 cuộn", "sẵn", "Tem giá, phụ kiện nhỏ"),
+ ("DN-3522-30-2", "nhiet", "Decal nhiệt 35×22 (lẻ 20.000đ/cuộn)", "35 × 22", "30 m", "2", "Thùng 100 cuộn", "sẵn", "Tem giá, phụ kiện nhỏ"),
  ("DN-4030-30-1", "nhiet", "Decal nhiệt 40×30", "40 × 30", "30 m", "1", "Thùng 100 cuộn", "sẵn", "Mã vạch bán lẻ"),
  ("DN-5030-25-1", "nhiet", "Decal nhiệt 50×30", "50 × 30", "25 m", "1", "Thùng 100 cuộn", "sẵn", "Mã vạch hàng hóa, kho"),
  ("DN-5030-30-1", "nhiet", "Decal nhiệt 50×30", "50 × 30", "30 m", "1", "Thùng 100 cuộn", "sẵn", "Mã vạch hàng hóa, kho"),

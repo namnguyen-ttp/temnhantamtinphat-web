@@ -35,7 +35,7 @@ CATS = [
   "h1": "Tem nhãn trắng – tem bế trắng in mã vạch",
   "lead": "Decal nền trắng bế sẵn từng con, cuộn đúng chiều, vừa khít máy in mã vạch của anh/chị. Kho vận, shop online, siêu thị đều dùng được ngay.",
   "spec": [("Chất liệu", "Decal giấy, decal nhiệt (in nhiệt trực tiếp), decal nhựa trắng"), ("Quy cách", "Cuộn 1 hoặc nhiều tem/hàng, hoặc dạng tờ"),
-           ("Kích thước hay đặt", "50×30, 40×30, 35×22, 100×150 mm hoặc bế theo yêu cầu"), ("Khổ bế tối đa", "330 mm"), ("Số lượng tối thiểu", "Từ 5–10 cuộn tùy quy cách")],
+           ("Kích thước hay đặt", "50×30, 40×30, 35×22, 100×150 mm hoặc bế theo yêu cầu"), ("Khổ bế tối đa", "330 mm"), ("Số lượng tối thiểu", "Từ 5–10 cuộn tùy quy cách"), ("Bảo hành nhiệt", "6 tháng (decal nhiệt)"), ("Giá lẻ 35×22×30 m", "20.000đ/cuộn")],
   "uses": ["Kho vận, vận đơn", "Shop online", "Siêu thị, tạp hóa", "Nhà thuốc", "May mặc", "Linh kiện điện tử"],
   "body": "<p>Tem trắng là loại tem bán chạy nhất của xưởng. Anh/chị chỉ cần báo <b>kích thước tem, số tem mỗi hàng và loại máy in</b>, xưởng bế và cuốn cuộn đúng chiều để in không lệch.</p>",
   "video": {"cap": "Bế và xả cuộn tem trắng 50×30", "yt": "", "h": "Từ cuộn decal tới cuộn tem bế sẵn", "p": "Xem máy bế tạo từng con tem, xả cuộn và kiểm cuộn trước khi đóng thùng."},

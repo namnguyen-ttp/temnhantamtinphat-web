@@ -349,13 +349,13 @@ def group_page(g):
 <div class="head"><h2>Ảnh thật tại kho</h2><p class="muted">Hàng chụp trực tiếp tại kho Tâm Tín Phát, không dùng ảnh mạng. Vuốt ngang để xem thêm.</p></div>
 {gallery(PHOTOS_WHITE, "galw")}
 <div class="poster-row"><div>{img("poster-giay-in-nhiet", "Các quy cách giấy in nhiệt A6, A7, 35x22, K80", 843, 1264)}</div>
-<div><h2>Quy cách bán chạy</h2><ul class="ticks lt"><li>{IC["check"]}<span><b>A6 cuộn</b> 100×150, 350 tem/cuộn</span></li><li>{IC["check"]}<span><b>A6 xấp</b> 100×150, 500 tem/xấp</span></li><li>{IC["check"]}<span><b>A7 cuộn</b> 75×100, 300 tem/cuộn</span></li><li>{IC["check"]}<span><b>A7 xấp</b> 75×100 hoặc 75×105, 500 tem/xấp</span></li><li>{IC["check"]}<span><b>35×22</b> cuộn 25–30 m, 2 tem/hàng</span></li><li>{IC["check"]}<span><b>Giấy in bill K80</b> Ø45 đến Ø80</span></li></ul>
+<div><h2>Quy cách bán chạy</h2><ul class="ticks lt"><li>{IC["check"]}<span><b>A6 cuộn</b> 100×150, 350 tem/cuộn</span></li><li>{IC["check"]}<span><b>A6 xấp</b> 100×150, 500 tem/xấp</span></li><li>{IC["check"]}<span><b>A7 cuộn</b> 75×100, 300 tem/cuộn</span></li><li>{IC["check"]}<span><b>A7 xấp</b> 75×100 hoặc 75×105, 500 tem/xấp</span></li><li>{IC["check"]}<span><b>35×22</b> cuộn 25–30 m, 2 tem/hàng, <b class="price">20.000đ/cuộn</b> (bán lẻ)</span></li><li>{IC["check"]}<span><b>Giấy in bill K80</b> Ø45 đến Ø80</span></li><li>{IC["check"]}<span><b>Bảo hành nhiệt 6 tháng</b> cho decal nhiệt, bảo quản nơi khô ráo</span></li></ul>
 <p class="muted">Lưu ý: số 350 trong "100×150×350" là số tem trên cuộn, không phải đường kính cuộn.</p>
 <a class="btn btn-red" href="tel:{s["hotline_raw"]}">{IC["phone"]} Gọi lấy giá sỉ</a></div></div>
 <div class="head" style="margin-top:clamp(40px,6vw,72px)"><h2>Bảng mã tem bế trắng có sẵn</h2><p class="muted">{len(WHITE)} mã hàng có sẵn tại kho. Lọc theo nhóm hoặc gõ kích thước, ví dụ "50 × 30".</p></div>
 {chips_filter(WHITE_FILTERS, "tblw")}
 <div class="scroll"><table class="cat-tbl stack" id="tblw"><thead><tr><th>Mã</th><th>Sản phẩm</th><th>Kích thước (mm)</th><th>Cuộn</th><th>Tem/hàng</th><th>Đóng gói</th><th>Dùng cho</th><th>Tình trạng</th></tr></thead><tbody>{rows}</tbody></table></div>
-<p class="muted" style="font-size:14px;margin-top:10px">Giá thay đổi theo số lượng thùng, gọi {s["hotline"]} để nhận giá sỉ.</p></div></section>
+<p class="muted" style="font-size:14px;margin-top:10px">Decal nhiệt 35×22×30 m giá bán lẻ 20.000đ/cuộn. Decal nhiệt bảo hành nhiệt 6 tháng. Giá sỉ thay đổi theo số lượng thùng, gọi {s["hotline"]} để nhận giá.</p></div></section>
 <section class="band" style="padding-top:0"><div class="wrap two">
 <div><h2>Không thấy kích thước cần tìm?</h2><p class="muted">Xưởng bế theo mọi kích thước, khổ bế tối đa 330 mm, đơn từ 5–10 cuộn. Các khổ thị trường hay đặt:</p><ul class="chips">{"".join(f"<li>{e(x)}</li>" for x in BESPOKE)}</ul></div>
 <div><h2>Chất liệu decal</h2><p class="muted">Phôi decal từ các hãng lớn như Avery Dennison, UPM Raflatac.</p><div class="scroll"><table class="spec stack"><thead><tr><th>Chất liệu</th><th>Đặc tính</th><th>Hợp với</th></tr></thead><tbody>{mats}</tbody></table></div></div>

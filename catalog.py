@@ -193,6 +193,7 @@ BRAND_STOCK = [
  ("Avery Dennison", "NW0080", "Decal nhiệt (có khổ topcoat)", "82, 90, 135, 200, 217, 220, 235, 240, 245", "nhiet", "Tem cân, vận đơn, tem kho"),
  ("Avery Dennison", "NW0083", "Decal nhiệt", "106, 108, 110, 145, 150, 158, 180, 210, 212, 220, 235, 245, 246, 257, 270, 297", "nhiet", "Vận đơn, tem giá, tem mã vạch"),
  ("Avery Dennison", "NWS5137", "Decal nhiệt nền PP", "130, 150, 210, 220, 240", "nhiet", "Hàng lạnh, hàng gặp nước"),
+ ("Avery Dennison", "P075W#M SY", "Decal nhiệt nền PP", "220", "nhiet", "Hàng lạnh, hàng gặp nước"),
  ("Avery Dennison", "AW0331", "Decal giấy bóng", "170", "giay", "Tem sản phẩm, tem thùng"),
  ("Avery Dennison", "AW0362", "Decal giấy keo remove (bóc sạch)", "119, 120, 144, 160, 185, 190, 218, 220, 232, 264, 272", "giay", "Tem dán tạm, hàng mới, kính"),
  ("Avery Dennison", "AW0379", "Decal giấy", "265, 315", "giay", "Tem sản phẩm, in màu"),

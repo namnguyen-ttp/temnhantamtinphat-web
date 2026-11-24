@@ -478,7 +478,7 @@ def godex_pages():
 <p class="lead">Hàng chính hãng GoDEX, có sẵn tại TP.HCM. Bảo hành máy 12 tháng, đầu in 6 tháng. Hướng dẫn cài đặt và thiết kế tem bằng GoLabel miễn phí.</p>
 <div class="hero-cta"><a class="btn btn-gold" href="tel:{s["hotline_raw"]}">{IC["phone"]} {s["hotline"]}</a><a class="btn btn-line" style="color:#fff" href="{s["zalo"]}">Zalo {s["zalo_num"]}</a></div></div>
 <div class="pic gpic-wrap">{pic}</div></div></section>
-<section class="band"><div class="wrap"><div class="head"><h2>Thông số kỹ thuật {e(n.replace("Máy in mã vạch ", "").replace("Máy in tem nhãn ", ""))}</h2></div>{spec_html}</div></section>
+<section class="band"><div class="wrap"><div class="head"><h2>Thông số kỹ thuật {e(re.sub(r"(?i)^(máy in (mã vạch|tem nhãn)( công nghiệp)?( cầm tay)?( bluetooth)?( cầm tay)?|máy in)\s*", "", n) or n)}</h2></div>{spec_html}</div></section>
 {f'<section class="band" style="padding-top:0"><div class="wrap"><div class="head"><h2>Sản phẩm cùng nhóm</h2></div><div class="rels">{rel_html}</div></div></section>' if rel_html else ""}
 {contact_band()}'''
         d = re.sub(r"[^0-9]", "", price)
@@ -487,7 +487,7 @@ def godex_pages():
         if d:
             prod["offers"] = {"@type": "Offer", "price": d, "priceCurrency": "VND", "availability": "https://schema.org/InStock", "url": url(slug)}
         sch = [org_schema(), crumbs_schema([("Trang chủ", "index.html"), ("Thiết bị GoDEX", "thiet-bi-godex.html"), (n, slug)]), prod]
-        write(slug, head(f"{n} – thông số, giá | Tâm Tín Phát"[:70], desc, slug, sch) + body + foot())
+        write(slug, head((f"{n} – thông số, giá | Tâm Tín Phát" if len(n) < 42 else f"{n} | Tâm Tín Phát"), desc, slug, sch) + body + foot())
         out.append((slug, n))
     return out
 

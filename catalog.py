@@ -206,7 +206,7 @@ BRAND_STOCK = [
  ("Avery Dennison", "SD8310", "Decal PP bóng siêu keo", "57, 230", "pp", "Bề mặt cong, khó bám"),
  ("Avery Dennison", "SY7022", "Decal PP chịu lạnh", "160, 200, 215", "pp", "Thủy sản, thịt, hàng tủ đông"),
  ("Avery Dennison", "SY7094", "Decal nhựa PP", "166", "pp", "Chai lọ, hàng gặp nước"),
- ("Avery Dennison", "MZ0102", "Decal PP nữ trang", "76, 88, 110, 271", "pp", "Tem vàng, trang sức"),
+ ("Avery Dennison", "MZ0102 (AAH678)", "Decal PP nữ trang", "76, 88, 110, 271", "pp", "Tem vàng, trang sức"),
  ("Avery Dennison", "ADS1588", "Decal xi bạc", "200, 210, 220", "pp", "Tem thông số máy, tem cao cấp"),
  ("UPM Raflatac", "HHF/RHC2", "Decal giấy (đế in logo UPM)", "165, 195, 212, 216, 220", "giay", "Tem sản phẩm, tem thùng"),
  ("UPM Raflatac", "RH9S", "Decal PP chịu lạnh", "192, 225", "pp", "Hàng đông lạnh, thủy sản"),

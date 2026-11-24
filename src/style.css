@@ -344,3 +344,13 @@ footer{padding-bottom:120px}
 .phero .price.big{color:var(--gold,#f5b301)}
 .gspec th,.gspec td{border-bottom:0}
 .price .vat{font-size:.6em;font-weight:600;opacity:.8}
+/* Breadcrumb dạng nút */
+.crumbs{gap:8px;align-items:center;margin-bottom:18px;font-size:14px}
+.crumbs>span:not(:last-child){display:none}
+.crumbs a,.crumbs>span:last-child{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:6px 14px;border-radius:999px;text-decoration:none;font-weight:600;line-height:1.2}
+.crumbs a{color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);transition:background .2s,transform .2s}
+.crumbs a:hover,.crumbs a:focus-visible{background:rgba(255,255,255,.26);transform:translateY(-1px)}
+.crumbs a::after{content:"›";margin-left:4px;opacity:.75;font-size:16px}
+.crumbs a:first-child::before{content:"";width:14px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 3 2 12h3v8h6v-6h2v6h6v-8h3z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 3 2 12h3v8h6v-6h2v6h6v-8h3z'/%3E%3C/svg%3E") center/contain no-repeat}
+.crumbs>span:last-child{color:#3a0b0e;background:var(--gold);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:600px){.crumbs{font-size:13px;gap:6px}.crumbs a,.crumbs>span:last-child{min-height:34px;padding:5px 12px}.crumbs>span:last-child{max-width:62vw}}

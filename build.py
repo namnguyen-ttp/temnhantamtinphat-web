@@ -549,11 +549,11 @@ def group_crumb(c):
     return f'<a href="{g["slug"]}.html">{e(g["name"])}</a><span>/</span>' if g else '<a href="index.html#danh-muc">Sản phẩm</a><span>/</span>'
 
 def brand_stock():
-    rows = "".join(f'<tr data-g="{g}"><td data-l="Hãng">{e(b)}</td><td data-l="Mã"><b>{e(m)}</b></td><td data-l="Loại">{e(t)}</td><td data-l="Khổ cuộn có sẵn (mm)">{e(k)}</td><td data-l="Dùng cho">{e(u)}</td></tr>' for b, m, t, k, g, u in BRAND_STOCK)
+    rows = "".join(f'<tr data-g="{g}"><td data-l="Hãng">{e(b)}</td><td data-l="Mã"><b>{e(m)}</b></td><td data-l="Loại">{e(t)}</td><td data-l="Cấu tạo">{e(c)}</td><td data-l="Khổ cuộn có sẵn (mm)">{e(k)}</td><td data-l="Dùng cho">{e(u)}</td></tr>' for b, m, t, k, g, u, c in BRAND_STOCK)
     return f'''<div><h2 id="bang-ma">Bảng mã decal Avery &amp; UPM có tại kho</h2>
-<p class="muted">{len(BRAND_STOCK)} mã đang có tại kho phôi xưởng. Khổ bên dưới là khổ cuộn lớn, xưởng xả và bế theo khổ tem anh/chị cần. Gõ mã hoặc khổ để tìm nhanh, ví dụ "AW0450" hoặc "220".</p>
+<p class="muted">{len(BRAND_STOCK)} mã đang có tại kho phôi xưởng. Khổ bên dưới là khổ cuộn lớn, xưởng xả và bế theo khổ tem anh/chị cần. Gõ mã hoặc khổ để tìm nhanh, ví dụ "AW0450" hoặc "220". Chưa rõ cách đọc mã? Xem bài <a href="ma-decal-avery-dennison-upm-la-gi.html">Cách đọc mã decal Avery Dennison và UPM</a>.</p>
 {chips_filter(BRAND_FILTERS, "tblbrand")}
-<div class="scroll"><table class="cat-tbl stack" id="tblbrand"><thead><tr><th>Hãng</th><th>Mã</th><th>Loại</th><th>Khổ cuộn có sẵn (mm)</th><th>Dùng cho</th></tr></thead><tbody>{rows}</tbody></table></div>
+<div class="scroll"><table class="cat-tbl stack" id="tblbrand"><thead><tr><th>Hãng</th><th>Mã</th><th>Loại</th><th>Cấu tạo (mặt · keo · đế)</th><th>Khổ cuộn có sẵn (mm)</th><th>Dùng cho</th></tr></thead><tbody>{rows}</tbody></table></div>
 <p class="muted" style="font-size:14px;margin-top:10px">Tồn kho thay đổi hằng ngày. Gọi <a href="tel:{SITE["hotline_raw"]}"><b>{SITE["hotline"]}</b></a> hoặc nhắn Zalo <a href="{SITE["zalo"]}">{SITE["zalo_num"]}</a> để xác nhận mã và khổ trước khi đặt.</p></div>'''
 
 def cat_page(c):

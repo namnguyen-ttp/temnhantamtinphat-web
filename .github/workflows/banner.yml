@@ -1,0 +1,22 @@
+name: Xuat banner GoDEX (tai ve)
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  banner:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python fetch_godex_images.py
+      - run: pip install pillow && python make_godex_banner.py
+      - name: Luu banner PNG vao nhanh banner-out
+        run: |
+          mkdir -p /tmp/out
+          python -c "from PIL import Image;import glob,os;[Image.open(f).save('/tmp/out/'+os.path.basename(f)[:-5]+'.png') for f in glob.glob('src/img/banner-godex*.webp')]"
+          git config user.name "github-actions" && git config user.email "actions@github.com"
+          git checkout --orphan banner-out && git rm -rqf . && cp /tmp/out/*.png . 
+          git add *.png && git commit -qm "banner $(date +%F)" && git push -f origin banner-out

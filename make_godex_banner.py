@@ -59,10 +59,22 @@ def bg(w, h):
 def tile(it, tw, ph, fb):
     """Thẻ sản phẩm phủ kín khung: nền là chính ảnh phóng to làm mờ, máy in đặt trọn ở giữa (không bị cắt)."""
     src = Image.open(os.path.join(GDIR, it[3].rsplit("/", 1)[-1])).convert("RGB")
-    back = ImageOps.fit(src, (tw, ph), Image.LANCZOS).filter(ImageFilter.GaussianBlur(18))
-    back = Image.blend(back, Image.new("RGB", back.size, WHITE), 0.25)
+    W, H = src.size
+    k = 0.06  # bỏ viền mép ảnh gốc, máy in to hơn
+    src = src.crop((int(W * k), int(H * k), int(W * (1 - k)), int(H * (1 - k))))
     fg = ImageOps.contain(src, (tw, ph), Image.LANCZOS)
-    back.paste(fg, ((tw - fg.size[0]) // 2, (ph - fg.size[1]) // 2))
+    back = Image.new("RGB", (tw, ph), WHITE)
+    ox, oy = (tw - fg.size[0]) // 2, (ph - fg.size[1]) // 2
+    # kéo dài màu nền ở mép ảnh ra hai bên cho kín khung (không mờ, không cắt máy)
+    if ox > 0:
+        lcol = fg.crop((0, 0, 2, fg.size[1])).resize((ox + 2, fg.size[1]))
+        rcol = fg.crop((fg.size[0] - 2, 0, fg.size[0], fg.size[1])).resize((tw - ox - fg.size[0] + 2, fg.size[1]))
+        back.paste(lcol, (0, oy)); back.paste(rcol, (ox + fg.size[0] - 2, oy))
+    if oy > 0:
+        tcol = fg.crop((0, 0, fg.size[0], 2)).resize((fg.size[0], oy + 2))
+        bcol = fg.crop((0, fg.size[1] - 2, fg.size[0], fg.size[1])).resize((fg.size[0], ph - oy - fg.size[1] + 2))
+        back.paste(tcol, (ox, 0)); back.paste(bcol, (ox, oy + fg.size[1] - 2))
+    back.paste(fg, (ox, oy))
     lab = getattr(fb, "_lab", 56)
     card = Image.new("RGB", (tw, ph + lab), WHITE)
     card.paste(back, (0, 0))

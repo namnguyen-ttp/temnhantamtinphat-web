@@ -56,17 +56,22 @@ def bg(w, h):
     return g
 
 
-def tile(it, s, fm, fb):
+def tile(it, tw, ph, fb):
+    """Thẻ sản phẩm phủ kín khung: nền là chính ảnh phóng to làm mờ, máy in đặt trọn ở giữa (không bị cắt)."""
     src = Image.open(os.path.join(GDIR, it[3].rsplit("/", 1)[-1])).convert("RGB")
-    ph = ImageOps.fit(src, (s, s), Image.LANCZOS)
-    card = Image.new("RGB", (s, s + int(s * 0.2)), WHITE)
-    card.paste(ph, (0, 0))
+    back = ImageOps.fit(src, (tw, ph), Image.LANCZOS).filter(ImageFilter.GaussianBlur(18))
+    back = Image.blend(back, Image.new("RGB", back.size, WHITE), 0.25)
+    fg = ImageOps.contain(src, (tw, ph), Image.LANCZOS)
+    back.paste(fg, ((tw - fg.size[0]) // 2, (ph - fg.size[1]) // 2))
+    lab = getattr(fb, "_lab", 56)
+    card = Image.new("RGB", (tw, ph + lab), WHITE)
+    card.paste(back, (0, 0))
     d = ImageDraw.Draw(card)
     name = model(it[0]).replace(" (USB)", "")
     f = fb
-    while d.textlength(name, font=f) > s - 24 and f.size > 14:
+    while d.textlength(name, font=f) > tw - 24 and f.size > 14:
         f = ImageFont.truetype(FB, f.size - 2)
-    d.text((s // 2, s + int(s * 0.1)), name, font=f, fill=DARK, anchor="mm")
+    d.text((tw // 2, ph + lab // 2), name, font=f, fill=DARK, anchor="mm")
     return rounded(card, 22)
 
 
@@ -97,19 +102,21 @@ def make(w, h, cols, out):
     sub = ("Giá chỉ từ " + f"{pm:,}".replace(",", ".") + "đ · đã gồm VAT") if pm else "Giá đã gồm VAT"
     d.text((pad, y), sub, font=mid, fill=GOLD)
     y += int(mid.size * 1.9)
-    # lưới sản phẩm
-    rows = min(2, (len(items) + cols - 1) // cols)
-    foot_h = int(h * 0.11)
+    # lưới sản phẩm: trải kín toàn bộ chiều ngang và chiều cao còn lại
+    rows = max(1, min(len(items), 8) // cols)  # chỉ lấy hàng đầy, không để ô trống
+    foot_h = int(h * 0.11) if h <= w * 1.2 else int(h * 0.075)
     gap = int(w * 0.022)
-    avail_h = h - y - foot_h - pad * 0.6
-    s = int(min((w - 2 * pad - gap * (cols - 1)) / cols, (avail_h - gap * (rows - 1)) / rows / 1.2))
-    gw = cols * s + (cols - 1) * gap
-    x0 = (w - gw) // 2
-    fb = ImageFont.truetype(FB, max(16, int(s * 0.1)))
+    avail_h = h - y - foot_h - int(pad * 0.6)
+    tw = int((w - 2 * pad - gap * (cols - 1)) / cols)
+    th = int((avail_h - gap * (rows - 1)) / rows)
+    lab = max(44, int(th * 0.16))
+    ph = th - lab
+    fb = ImageFont.truetype(FB, max(18, min(int(lab * 0.5), int(tw * 0.09))))
+    fb._lab = lab
     for i, it in enumerate(items[: cols * rows]):
         r, k = divmod(i, cols)
-        tx, ty = x0 + k * (s + gap), int(y + r * (s * 1.2 + gap))
-        t = tile(it, s, None, fb)
+        tx, ty = pad + k * (tw + gap), int(y + r * (th + gap))
+        t = tile(it, tw, ph, fb)
         shadow(c, (tx, ty, tx + t.size[0], ty + t.size[1]))
         c.paste(t, (tx, ty), t)
     # chân banner
@@ -135,3 +142,4 @@ def make(w, h, cols, out):
 if __name__ == "__main__":
     make(1600, 1100, 4, "banner-godex.webp")
     make(1080, 1080, 3, "banner-godex-vuong.webp")
+    make(1080, 1920, 2, "banner-godex-dung.webp")  # dọc 9:16, đầy màn hình điện thoại (story/reels)

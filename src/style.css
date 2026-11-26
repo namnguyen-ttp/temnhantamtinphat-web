@@ -360,3 +360,5 @@ footer{padding-bottom:120px}
 .scroll{overflow-x:auto;max-width:100%}
 .prose .spec th,.prose .spec td{white-space:normal}
 @media(max-width:600px){.prose .spec.stack td{border:0}}
+.pgrid .pic picture{display:block;width:100%;height:100%}
+@media(max-width:640px){.pgrid .pic.gban{aspect-ratio:9/16;max-height:none}}

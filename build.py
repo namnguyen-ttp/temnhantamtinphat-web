@@ -405,13 +405,17 @@ def group_page(g):
     sub_cats = [c for c in CATS if c["slug"] in g["cats"]]
     more = f'<section class="band" style="padding-top:0"><div class="wrap"><div class="head"><h2>Xem chi tiết từng dòng</h2></div><div class="cats">{"".join(cat_card(c) for c in sub_cats)}</div></div></section>' if sub_cats else ""
     gban = os.path.exists(os.path.join(SRC, "img", "banner-godex.webp"))
-    pic = {"godex": img("banner-godex", "Máy in mã vạch để bàn GoDEX chính hãng: GM630 Pro, RT863i Pro, RT730i Pro, RT700i Pro, EZ530+, DT4L, G500, GE300", 1600, 1100, "cover", True) if gban else printer_svg("ban", model="GoDEX"), "trang": img("thung-cuon-decal", "Decal nhiệt cuộn tại kho Tâm Tín Phát", 960, 1200, "cover", True),
+    gdung = os.path.exists(os.path.join(SRC, "img", "banner-godex-dung.webp"))
+    gimg_ = img("banner-godex", "Máy in mã vạch để bàn GoDEX chính hãng: GM630 Pro, RT863i Pro, RT730i Pro, RT700i Pro, EZ530+, DT4L, G500, GE300", 1600, 1100, "cover", True)
+    if gdung:  # điện thoại: banner dọc 9:16 đầy màn hình
+        gimg_ = f'<picture><source media="(max-width:640px)" srcset="img/banner-godex-dung.webp" width="1080" height="1920">{gimg_}</picture>'
+    pic = {"godex": gimg_ if gban else printer_svg("ban", model="GoDEX"), "trang": img("thung-cuon-decal", "Decal nhiệt cuộn tại kho Tâm Tín Phát", 960, 1200, "cover", True),
            "mau": img("banner-tem-nhan", "Các loại tem nhãn in màu Tâm Tín Phát", 1376, 768, "cover", True)}[g["kind"]]
     body = f'''<section class="phero"><div class="wrap pgrid"><div>
 <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Trang chủ</a><span>/</span><a href="index.html#danh-muc">Sản phẩm</a><span>/</span><span>{e(g["name"])}</span></nav>
 <h1>{e(g["h1"])}</h1><p class="lead">{e(g["lead"])}</p>
 <div class="hero-cta"><a class="btn btn-gold" href="tel:{s["hotline_raw"]}">{IC["phone"]} {s["hotline"]}</a><a class="btn btn-line" style="color:#fff" href="{s["zalo"]}">Zalo {s["zalo_num"]}</a></div></div>
-<div class="pic">{pic}</div></div></section>
+<div class="pic{' gban' if g['kind']=='godex' else ''}">{pic}</div></div></section>
 <nav class="gtabs"><div class="wrap">{"".join(f'<a href="{x["slug"]}.html"{" aria-current=page" if x is g else ""}>{e(x["name"])}</a>' for x in GROUPS)}</div></nav>
 {main}{more}{contact_band()}'''
     sch = [org_schema(), crumbs_schema([("Trang chủ", "index.html"), (g["name"], g["slug"] + ".html")])]

@@ -85,7 +85,9 @@ def label(kind, x, y, w=150, h=110, seed=3):
 DEFS = '<defs><linearGradient id="silver" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef1f4"/><stop offset=".5" stop-color="#c7ced6"/><stop offset="1" stop-color="#f6f7f9"/></linearGradient><linearGradient id="core" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3e7dc"/><stop offset="1" stop-color="#cdb8a3"/></linearGradient></defs>'
 
 KIND_PHOTO = {"trang": ("tem-35x22-ke-sat", "Tem nhãn trắng 35x22 bế sẵn, chụp tại kho"),
-              "nhiet": ("nhiet-lien-tuc-76", "Cuộn decal nhiệt liên tục khổ 76 tại kho")}
+              "nhiet": ("nhiet-lien-tuc-76", "Cuộn decal nhiệt liên tục khổ 76 tại kho"),
+              "mau": ("tem-trang-suc", "Tem nhãn in màu do xưởng Tâm Tín Phát in"),
+              "nganh": ("banner-tem-nhan", "Tem nhãn theo ngành: mỹ phẩm, thực phẩm, vận chuyển")}
 KIND_TILE = {"mau": ("Tem in màu", "In 5–6 màu · cán màng · bế hình"),
              "vo": ("Decal vỡ", "Bóc là vỡ · tem bảo hành"),
              "nhua": ("Decal nhựa", "PP · PVC · trong · xi bạc"),
@@ -153,7 +155,7 @@ STEP_IC = [
 ]
 
 # ---------- page chrome ----------
-NAV = [("index.html#danh-muc", "Sản phẩm", "sp"), ("bai-viet.html", "Bài viết", "bv"), ("gioi-thieu.html", "Giới thiệu", "gt"), ("lien-he.html", "Liên hệ", "lh")]
+NAV = [("san-pham-tem-be-trang.html", "Tem bế trắng", "tbt"), ("san-pham-tem-mau.html", "Tem nhãn màu", "tm"), ("giay-decal-avery-upm.html", "Decal Avery & UPM", "av"), ("thiet-bi-godex.html", "Máy in GoDEX", "gd"), ("bai-viet.html", "Bài viết", "bv"), ("lien-he.html", "Liên hệ", "lh")]
 
 def nav_html():
     out = []
@@ -228,11 +230,12 @@ def head(title, desc, path, schemas=()):
 {"".join(ld(x) for x in schemas)}
 </head>
 <body>
+<div class="topbar"><div class="wrap"><span>Xưởng in tem nhãn · {e(SITE["address"])}</span><span>{e(SITE["hours"])} · Hotline <a href="tel:{SITE["hotline_raw"]}"><b>{SITE["hotline"]}</b></a></span></div></div>
 <header class="top"><div class="wrap">
 <a class="brand" href="index.html">{lotus()}<span>Tâm Tín Phát<small>Xưởng in tem nhãn</small></span></a>
 <button class="burger" aria-label="Mở menu" aria-expanded="false"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 <ul class="menu">{nav_html()}</ul>
-<a class="btn btn-red" href="lien-he.html#bao-gia">Nhận báo giá</a>
+<a class="btn btn-red" href="lien-he.html#bao-gia">Gửi yêu cầu báo giá</a>
 </div></header>
 <main>
 '''
@@ -508,15 +511,14 @@ def home():
              ("Duyệt layout", "Xưởng dựng bản layout để anh/chị duyệt nội dung, màu, kích thước trước khi in."),
              ("In, cán màng, bế", "In 5–6 màu trên dây chuyền xưởng, cán màng và bế đúng hình."),
              ("Giao tận nơi", "Giao nội thành TP.HCM, gửi xe đi tỉnh theo yêu cầu.")]
-    body = f'''<section class="hero"><div class="wrap">
-<div class="hero-grid"><div>
-<h1>In tem nhãn đẹp, <b>chuẩn xưởng</b>, nhận cả đơn nhỏ</h1>
-<p class="lead">Tâm Tín Phát là xưởng in tem nhãn tại Bình Chánh, TP.HCM: tem bế trắng, tem in màu, decal vỡ, decal nhựa, giấy in nhiệt. Anh/chị gửi kích thước, xưởng lo phần còn lại.</p>
-<div class="hero-cta"><a class="btn btn-gold" href="tel:{s["hotline_raw"]}">{IC["phone"]} Gọi {s["hotline"]}</a><a class="btn btn-line" href="{s["zalo"]}">Gửi file qua Zalo</a></div>
+    body = f'''<section class="hero"><div class="wrap hero-grid"><div>
+<p class="kicker">Nhà sản xuất tem nhãn tại TP.HCM</p>
+<h1>Tem nhãn, decal cuộn và giấy in nhiệt – có sẵn, giao ngay</h1>
+<p class="lead">Xưởng in tem nhãn tại Bình Chánh, TP.HCM: tem bế trắng, tem in màu 5–6 màu, decal vỡ, decal nhựa, giấy in nhiệt. Decal Avery Dennison, UPM Raflatac. Nhận đơn từ 5–10 cuộn.</p>
+<div class="hero-cta"><a class="btn btn-red" href="san-pham-tem-be-trang.html">Xem bảng mã tem có sẵn</a><a class="btn btn-line" href="{s["zalo"]}">Zalo {s["zalo_num"]}</a></div>
 </div>
-<ul class="facts"><li><b>ISO 9001:2015</b><span>Quy trình sản xuất được chứng nhận</span></li><li><b>5–6 màu</b><span>In cuộn và in tờ</span></li><li><b>Từ 5 cuộn</b><span>Nhận đơn số lượng nhỏ</span></li><li><b>~100 người</b><span>Đội ngũ xưởng và kỹ thuật</span></li></ul>
-</div></div>
-<div class="roll">{hero_svg()}</div></section>
+<div class="hero-pic">{img("a6-cuon-100x150x350", "Cuộn tem 100x150 tại kho xưởng Tâm Tín Phát", 960, 1200, "cover", True)}</div></div>
+<div class="wrap"><ul class="facts"><li><b>ISO 9001:2015</b><span>Quy trình sản xuất được chứng nhận</span></li><li><b>5–6 màu</b><span>In letterpress, cuộn và tờ</span></li><li><b>Từ 5 cuộn</b><span>Nhận đơn số lượng ít</span></li><li><b>Freeship</b><span>Đơn trên 3 triệu toàn quốc</span></li></ul></div></section>
 <div class="strip"><div class="wrap"><span>{IC["check"]} Duyệt layout trước khi in</span><span>{IC["check"]} Cán màng bóng / mờ</span><span>{IC["check"]} Bế theo mọi hình</span><span>{IC["check"]} Tem cuộn hợp mọi máy in mã vạch</span>{fsc_strip}</div></div>
 <section class="band" id="danh-muc"><div class="wrap">
 <div class="head"><h2>3 nhóm sản phẩm chính</h2><p class="muted">Tem bế trắng có sẵn hàng trăm cuộn mỗi mã, tem màu in theo yêu cầu, và máy in GoDEX để in tem ngay tại cửa hàng, nhà máy.</p></div>
